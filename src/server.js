@@ -28,7 +28,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
 const mongoose = require('mongoose')
-const databaseURL = ""
+let databaseURL = ""
 switch (process.env.NODE_ENV.toLowerCase()){
     case "test":
         databaseURL = 'mongodb://localhost:27017/ExpressBuildAnAPI-test'
