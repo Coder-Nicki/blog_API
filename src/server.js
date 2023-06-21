@@ -64,9 +64,25 @@ app.get("/databaseHealth", (request, response) => {
         dbHost: databaseHost
     })
 })
+
 app.get('/', (request, response) => {
     response.json({
         message: "Welcome to the blog page"
+    })
+})
+
+app.get('/databaseDump', async (request, response) => {
+    const dumpContainer = {}
+    let collections = await mongoose.connection.db.listCollections().toArray()
+    collections = collections.map((collection) => collection.name)
+
+    for (const collectionName of collections){
+        let collectionData = await mongoose.connection.db.collection(collectionName).find({}).toArray()
+        dumpContainer[collectionName] = collectionData
+    }
+    console.log("Dumping all of this data to the client: \n" + JSON.stringify(dumpContainer, null, 4))
+    response.json({
+        data: dumpContainer
     })
 })
 
