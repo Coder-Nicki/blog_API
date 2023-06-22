@@ -8,7 +8,7 @@ async function getPostById(postId){
     return await Post.findById(postId)
 }
 
-async function getPostByAuthor(userId){
+async function getPostsByAuthor(userId){
     return await Post.find({author: userId})
 }
 

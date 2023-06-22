@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const {
     getAllPosts, getPostById, getPostsByAuthor, createPost, updatePost, deletePost
-} = require('..controllers/posts_controller');
+} = require('../controllers/posts_controller');
 
 router.get('/', async (request, response) => {
     let allPosts = await getAllPosts()
