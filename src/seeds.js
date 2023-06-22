@@ -14,6 +14,10 @@ const roles = [
         description:"A regular user can view, create and read data. They can edit and delete only their own data."
     },
     {
+        name: "regular",
+        description:"More data."
+    },
+    {
         name: "admin",
         description:"An admin user has full access and permissions to do anything and everything within this API."
     },

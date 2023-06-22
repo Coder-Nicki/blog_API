@@ -71,6 +71,15 @@ app.get('/', (request, response) => {
     })
 })
 
+const rolesRouter = require('./routes/role_routes')
+app.use('/roles', rolesRouter)
+
+const usersRouter = require('./routes/user_routes')
+app.use('/users', usersRouter)
+
+const postsRouter = require('./routes/post_router')
+app.use('/posts', postsRouter)
+
 app.get('/databaseDump', async (request, response) => {
     const dumpContainer = {}
     let collections = await mongoose.connection.db.listCollections().toArray()
